@@ -42,7 +42,7 @@ def call_llm(essay_id, essay_content):
 
     # First call to let the model decide to use the tool
     response = ollama.chat(
-        model='gemma4',
+        model='dlm-aes-few-shot',
         messages=messages,
         options={"temperature": 0.2},
         format="json",
@@ -132,5 +132,5 @@ if __name__ == '__main__':
     output_dir = Path('./dataset/result')
     output_dir.mkdir(exist_ok=True, parents=True)
     data_path = Path('./dataset/split/test.csv')
-    output_path = Path('./dataset/result/results_zeroshot_test.csv')
+    output_path = Path('./dataset/result/results_fewshot_test.csv')
     process_all_essays(data_path, output_path)
